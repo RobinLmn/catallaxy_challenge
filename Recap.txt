@@ -1,0 +1,6 @@
+Alice fait une transaction à Bob
+    -> Transaction est convertie en hash pour la vérifier
+        -> temps de vérification : 10min
+        -> temps de faire le hash doit etre supérieur à 10min
+
+Hash Rate (EH /s) = Difficulty * 32 bits / temps de verification 

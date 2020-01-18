@@ -12,3 +12,14 @@ header {
     position: relative;
     text-align: center;
 }
+
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+form {
+    text-align: left;
+    font-size: 23px;
+    font-family: Georgia;
+}

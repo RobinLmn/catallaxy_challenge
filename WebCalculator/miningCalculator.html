@@ -11,7 +11,15 @@
     <form>
         Hashing Power:
         <br><br>
-        <input type="text" name="hashrate"><br><br>
+        <input type="text" name="HashingPower">
+            <select name="currentHashingUnit">
+                <option value="H/s">H/s</option>
+                <option value="KH/s">KH/s</option>
+                <option value="MH/s">MH/s</option>
+                <option value="GH/s">GH/s</option>
+                <option value="TH/s">TH/s</option>
+            </select>
+        <br><br>
         Bitcoins Mined:
         <br><br>
         <input type="text" name="bitcoinsmined"><br><br>
@@ -20,7 +28,14 @@
         <input name="rewards"><br><br>
         Difficulty:
         <br><br>
+        <input name="rewards"><br><br>
+        Power Comsumption (w):<br><br>
+        <input name="rewards"><br><br>
+        Cost Per KWh ($)<br><br>
+        <input type="text" name="hashrate"><br><br>
+        Pool fee (%):<br><br>
         <input name="difficulty"><br><br>
+        <input type="submit" value="Calculate">
     </form>
 </main>
 <footer></footer>

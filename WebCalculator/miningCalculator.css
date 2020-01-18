@@ -1,0 +1,14 @@
+header {
+    font-size: 70px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    color: lightgreen;
+    letter-spacing: 3px;
+    font-variant: all-small-caps;
+    text-shadow: 2px 2px darkgreen;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    position: relative;
+    text-align: center;
+}

@@ -12,12 +12,11 @@
     <script src="calculator.js"></script>
   </head>
   <body>
-    <header>Bitcoins mining calculator</header>
+    <header>Bitcoins Mining Calculator</header>
     <main>
       <div class="row">
-        <div class="column">
-      <form
-              class="w3-padding-80 w3-container w3-card-4 w3-round-xxlarge">
+        <div class="column w3-card-4 w3-round-xxlarge">
+      <form>
         <h2 class="w3-xxxlarge w3-text-black">Inputs</h2><br>
         <label
                 class="w3-text-orange"><b> Hashing power &#x21C4; bitcoins
@@ -58,9 +57,10 @@
         <button value="Calculate" onclick="calcul()" class="w3-btn w3-orange">
           Calculate</button>
         </p>
+        <p id="result_day"></p>
       </form>
         </div>
-      <div class="column">
+      <div class="column w3-card-4 w3-round-xxlarge">
         <div>
           <p id="result_day">result day</p>
           <p id="result_week">result week</p>

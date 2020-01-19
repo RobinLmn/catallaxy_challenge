@@ -20,7 +20,14 @@ var calcul = function() {
 
   var btc = document.getElementById("BitcoinsMined").value;
   var bitcoins_mined = parseFloat(btc);
+
   var checked = document.getElementById("myCheck").checked;
+
+  var power_consumption = document.getElementById("PowerConsumption").value;
+  var power_cons = parseFloat(power_consumption);
+
+  var power_cost_str = document.getElementById("PowerCost").value;
+  var power_cost = parseFloat(power_cost_str);
 
   t = 84600;
 
@@ -36,14 +43,30 @@ var calcul = function() {
       console.log("returned ", d);
 
       if (checked) {
-        var resultat1 = hr_to_btc(hashrate, d);
-        console.log(resultat1);
-        document.getElementById("result").innerHTML = resultat1 + "";
+
+        var resultat1_day = hr_to_btc(hashrate, d);
+        var resultat1_week = hr_to_btc(hashrate, d, );
+        var resultat1_month = hr_to_btc(hashrate, d, );
+        var resultat1_year = hr_to_btc(hashrate, d, );
+
+        document.getElementById("result_day").innerHTML = resultat1_day + "";
+        document.getElementById("result_week").innerHTML = resultat1_week + "";
+        document.getElementById("result_month").innerHTML = resultat1_month + "";
+        document.getElementById("result_year").innerHTML = resultat1_year + "";
+
+
       } else {
-        var resultat2 = btc_to_hr(bitcoins_mined, d);
-        document.getElementById("result").innerHTML = resultat2 + "";
-        console.log(resultat2);
-      }
+
+        var resultat2_day = btc_to_hr(bitcoins_mined, d, );
+        var resultat2_week = btc_to_hr(bitcoins_mined, d, );
+        var resultat2_month = btc_to_hr(bitcoins_mined, d, );
+        var resultat2_year = btc_to_hr(bitcoins_mined, d, );
+        
+        document.getElementById("result_day").innerHTML = resultat2_day + "";
+        document.getElementById("result_week").innerHTML = resultat2_week + "";
+        document.getElementById("result_month").innerHTML = resultat2_month + "";
+        document.getElementById("result_month").innerHTML = resultat2_year + "";
+      } 
 
     }
   };
@@ -55,19 +78,17 @@ var calcul = function() {
   xhttp.send();
 
   //////////////////////////////////////////////
-
-  
 };
 
-var hr_to_btc = function(hr, d) {
+var hr_to_btc = function(hr, d, t=84600) {
+  
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var a = (hr / ghr) * r;
   return a;
 };
 
-var btc_to_hr = function(a, d) {
-  var t = 84600;
+var btc_to_hr = function(a, d, t=84600) {
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var hr = (a / r) * ghr;
@@ -79,5 +100,19 @@ var btc_to_dollar = function(btc) {
   var dollar_one_btc = 8938.65;
   return dollar_one_btc * btc;
 };
+
+var electricity_cost = function(power_cons, power_cost, t=84600){
+  /*  power consumption -> Watt
+      power cost -> $ / kWh
+
+      electricty cost = cons * t * power cost
+  */
+  var tot_cost = power_cons * t * power_cost;
+  return tot_cost;
+}
+
+var profits = function(cost, earned, fees){
+    return earned - cost;
+}
 
 //var h = 2367890000;

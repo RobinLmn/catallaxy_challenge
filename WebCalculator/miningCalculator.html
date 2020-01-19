@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="miningCalculator.css">
     <title>Bitcoins mining calculator</title>
+    <script src="calculator.js"></script>
 </head>
 <body>
 <header>Bitcoins mining calculator</header>
@@ -22,20 +23,19 @@
         <br><br>
         Bitcoins Mined:
         <br><br>
-        <input type="text" name="bitcoinsmined"><br><br>
+        <input type="text" name="BitcoinsMined"><br><br>
         Rewards:
         <br><br>
-        <input name="rewards"><br><br>
-        Difficulty:
-        <br><br>
-        <input name="rewards"><br><br>
+        <input type="text" name="Rewards"><br><br>
+        Difficulty:<br><br>
+        <input type="text" name="difficulty"><br><br>
         Power Comsumption (w):<br><br>
-        <input name="rewards"><br><br>
+        <input type="text" name="PowerComsumption"><br><br>
         Cost Per KWh ($)<br><br>
-        <input type="text" name="hashrate"><br><br>
+        <input type="text" name="CostPerKwh"><br><br>
         Pool fee (%):<br><br>
-        <input name="difficulty"><br><br>
-        <input type="submit" value="Calculate">
+        <input type="text" name="PoolFee"><br><br>
+        <input type="Button" value="Calculate" onclick="calcul()">
     </form>
 </main>
 <footer></footer>

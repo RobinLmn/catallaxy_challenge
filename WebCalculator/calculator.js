@@ -7,7 +7,7 @@ var calcul = function() {
 
   function myFunction() {
     var x = document.getElementById("myCheck").checked;
-    document.getElementById("demo").innerHTML = x;
+    console.log(x);
   }
 
   if (myFunction()) {
@@ -18,6 +18,19 @@ var calcul = function() {
     text.style.display = resultat2;
   }
 };
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       console.log(xhttp.responseText);
+
+       const obj = JSON.parse(xhttp.responseText);
+       console.log(obj.difficulty);
+    }
+};
+xhttp.open("GET", "https://blockexplorer.com/api/status?q=getDifficulty&fbclid=IwAR1Op2Trtzp6FGMMkU0O4LwYkq2EuoBFe90RzkdhKI3EYZiy80rZHEIm8ts", true);
+xhttp.send(); 
 
 var hr_to_btc = function(hr, d) {
   var r = 12.5;

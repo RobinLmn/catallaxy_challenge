@@ -36,6 +36,7 @@ form {
     float: left;
     width: 45%;
     padding-left: 50px;
+    
     margin: 1.5em;
 }
 
@@ -46,7 +47,8 @@ table {
     padding-top: 25px;
     padding-bottom:25px;
     font-weight: bold;
-    color: darkorange
+    color: darkorange;
+    text-align: left;
 }
 
 /* Clear floats after the columns */

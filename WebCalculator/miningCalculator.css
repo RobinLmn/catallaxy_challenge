@@ -25,6 +25,12 @@ input[type=checkbox] {
     vertical-align: middle;
 }
 
+input[type=button] {
+    background-color: darkorange;
+    border-radius: 10px;
+    size: 50px;
+}
+
 main {
     margin-left: 10%;
     margin-right: 10%;

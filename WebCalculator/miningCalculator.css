@@ -23,6 +23,11 @@ main {
     margin-right: 10%;
 }
 
+h2 {
+    font: 'Montserrat', sans-serif;
+    font-weight: bold;
+    
+}
 form {
     text-align: left;
     font-size: 23px;

@@ -1,15 +1,19 @@
+var d;
+
 var calcul = function() {
-  var hashrate = document.getElementById("hashrate");
+  var hr = document.getElementById("HashingPower").value;
+  var hashrate = parseInt(hr);
   var bitcoinsmined = document.getElementById("bitcoinsmined");
   var rewards = document.getElementById("rewards");
   var checked = document.getElementById("myCheck").checked;
+  var btc_mined = document.getElementById("btc_mined");
 
   t = 84600;
 
   ///////////////////////////////////////
 
   var xhttp = new XMLHttpRequest();
-  var d;
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       // Typical action to be performed when the document is ready:
@@ -27,6 +31,7 @@ var calcul = function() {
   //////////////////////////////////////////////
 
   if (checked) {
+    btc_mined.style.dsplay = "none";
     var resultat1 = hr_to_btc(hashrate);
     console.log(resultat1);
   } else {

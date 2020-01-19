@@ -66,7 +66,7 @@ var hr_to_btc = function(hr, d, t=84600) {
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var a = (hr / ghr) * r;
-  return a ;
+  return a;
 };
 
 var btc_to_hr = function(a, d, t=84600) {
@@ -96,7 +96,7 @@ var profits = function(earned, cost, fees){
     return (earned - cost - (earned *  fees /100)).toFixed(2);
 }
 
-var compute_and_display = function(hashrate, bitcoins_mined, d){
+var compute_and_display = function(hashrate, bitcoinsmined, d){
   var checked = document.getElementById("myCheck").checked;
 
   var power_consumption = document.getElementById("PowerConsumption").value;
@@ -118,7 +118,9 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   if (checked) {
     [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(hashrate, hr_to_btc, d);
   } else {
+    console.log("A");
     [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(bitcoinsmined, btc_to_hr, d);
+    console.log(resultat_day);
   }
 
   decimals = 6;

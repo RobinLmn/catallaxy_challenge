@@ -70,7 +70,7 @@ var calcul = function() {
 
       document.getElementById("Difficulty").defaultValue = d;
       var diff = document.getElementById("Difficulty").value;
-     // console.log("result", d);
+      console.log("result", d);
       compute_and_display(hashrate, bitcoins_mined, d);
     }
   }

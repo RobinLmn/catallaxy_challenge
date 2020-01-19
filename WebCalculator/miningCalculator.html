@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Gelasio|Montserrat&display=swap');
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="miningCalculator.css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,8 +16,9 @@
     <main>
       <div class="row">
         <div class="column">
-      <form class="w3-container w3-card-4">
-        <h2 class="w3-text-orange">Inputs</h2><br>
+      <form
+              class="w3-panel w3-padding-80 w3-container w3-card-4 w3-round-xxlarge">
+        <h2 class="w3-xxxlarge w3-text-black">Inputs</h2><br>
         <label
                 class="w3-text-orange"><b> Hashing power &#x21C4; bitcoins
           mined:</b></label>
@@ -55,15 +59,14 @@
           Calculate</button>
         </p>
       </form>
-      <div>
-        <p id="result_day"></p>
-        <p id="result_week"></p>
-        <p id="result_month"></p>
-        <p id="result_year"></p>
-      </div>
         </div>
       <div class="column">
-        fsldfnsjkfk
+        <div>
+          <p id="result_day">result day</p>
+          <p id="result_week">result week</p>
+          <p id="result_month">result month</p>
+          <p id="result_year">result year</p>
+        </div>
       </div>
       </div>
     </main>

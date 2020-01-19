@@ -1,17 +1,18 @@
 var calcul = function() {
-  var bool;
   var hashrate = document.getElementById("hashrate");
   var bitcoinsmined = document.getElementById("bitcoinsmined");
   var rewards = document.getElementById("rewards");
   var difficulty = document.getElementById("difficulty");
+  var checkBox = document.getElementById("hr_to_btc");
 
-  if(){
-      
+  if (checkBox.checked){
+    hr_to_btc(hashrate, difficulty);
+  } else {
+    btc_to_hr(bitcoinsmined, difficulty);
   }
-  return bool;
 };
 
-var hr_to_btc = function(hr, d, bool) {
+var hr_to_btc = function(hr, d) {
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var a = (hr / ghr) * r;

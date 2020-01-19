@@ -2,19 +2,13 @@ var display = function() {
   var checked = document.getElementById("myCheck").checked;
   var btc_mined = document.getElementById("btc_mined");
   var hashpower = document.getElementById("hashpower");
-  var btc_to_hr_txt = document.getElementById("btc_to_hr");
-  var hr_to_btc_txt = document.getElementById("hr_to_btc");
 
   if (checked) {
     btc_mined.style.display = "none";
     hashpower.style.display = "block";
-    hr_to_btc_txt.style.display = "block";
-    btc_to_hr_txt.style.display = "none";
   } else {
     btc_mined.style.display = "block";
     hashpower.style.display = "none";
-    hr_to_btc_txt.style.display = "none";
-    btc_to_hr_txt.style.display = "block";
   }
 };
 
@@ -121,17 +115,10 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   var resultat_month;
   var resultat_year;
 
-  var to_display;
-  var unit_display;
-
   if (checked) {
-    to_display = "Bitcoins Mined: ";
-    unit_display = "BTC"
-    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(hashrate, hr_to_btc, to_display, unit_display, d);
+    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(hashrate, hr_to_btc, d);
   } else {
-    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(bitcoinsmined, btc_to_hr, to_display, unit_display, d);
-    to_display = "Hash Rate: "
-    unit_display = "H/s"
+    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(bitcoinsmined, btc_to_hr, d);
   }
 
   decimals = 6;
@@ -161,7 +148,6 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   var profit_month = profits(resultat_doll_month, elec_cost_month, fee);
   var profit_year = profits(resultat_doll_year, elec_cost_year, fee);
 
-
   document.getElementById("profit_day").innerHTML = "Profit/day: " + round(profit_day, decimals) + "$";
   document.getElementById("profit_week").innerHTML = "Profit/week: " + round(profit_week, decimals) + "$";
   document.getElementById("profit_month").innerHTML = "Profit/month: " + round(profit_month, decimals) + "$";
@@ -170,7 +156,7 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   // return elec_cost_day, elec_cost_week, elec_cost_month, elec_cost_year;
 }
 
-var compute_results = function(variable, f, to_display, unit_display, d=0){
+var compute_results = function(variable, f, d=0){
     var day = 86400;
     
     var resultat_day = f(variable, d);
@@ -178,10 +164,10 @@ var compute_results = function(variable, f, to_display, unit_display, d=0){
     var resultat_month = f(variable, d, day*31);
     var resultat_year = f(variable, d, day*365);
     
-    document.getElementById("result_day").innerHTML = to_display + resultat_day.toExponential(3) + unit_display;
-    document.getElementById("result_week").innerHTML = to_display + resultat_day.toExponential(3) + unit_display;
-    document.getElementById("result_month").innerHTML = to_display + resultat_day.toExponential(3)+ unit_display;
-    document.getElementById("result_year").innerHTML = to_display + resultat_day.toExponential(3) + unit_display;
+    document.getElementById("result_day").innerHTML = "Mined/day: " + resultat_day.toExponential(3) + " BTC";
+    document.getElementById("result_week").innerHTML = "Mined/week: " + resultat_day.toExponential(3) + " BTC";
+    document.getElementById("result_month").innerHTML = "Mined/month: " + resultat_day.toExponential(3)+ " BTC";
+    document.getElementById("result_year").innerHTML = "Mined/year: " + resultat_day.toExponential(3) + " BTC";
 
     return [resultat_day, resultat_month, resultat_week, resultat_year];
 }

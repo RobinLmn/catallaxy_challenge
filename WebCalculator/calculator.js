@@ -17,6 +17,7 @@ var calcul = function() {
   var hashrate = parseFloat(hr);
 
   var unit = document.getElementById("mySelect").value;
+
   
   switch(unit) {
     case "KH/s":
@@ -65,7 +66,7 @@ var hr_to_btc = function(hr, d, t=84600) {
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var a = (hr / ghr) * r;
-  return a;
+  return a ;
 };
 
 var btc_to_hr = function(a, d, t=84600) {
@@ -78,7 +79,7 @@ var btc_to_hr = function(a, d, t=84600) {
 
 var btc_to_dollar = function(btc) {
   var dollar_one_btc = 8938.65;
-  return dollar_one_btc * btc;
+  return (dollar_one_btc * btc);
 };
 
 var electricity_cost = function(power_cons, power_cost, t=84600){
@@ -91,8 +92,8 @@ var electricity_cost = function(power_cons, power_cost, t=84600){
   return tot_cost;
 }
 
-var profits = function(cost, earned, fees){
-    return earned - cost - (earned *  fees /100);
+var profits = function(earned, cost, fees){
+    return (earned - cost - (earned *  fees /100)).toFixed(2);
 }
 
 var compute_and_display = function(hashrate, bitcoins_mined, d){
@@ -115,59 +116,64 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   var resultat_year;
 
   if (checked) {
-    resultat_day, resultat_month, resultat_week, resultat_year = compute_results(hashrate, hr_to_btc, d);
+    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(hashrate, hr_to_btc, d);
   } else {
-    resultat_day, resultat_month, resultat_week, resultat_year = compute_results(bitcoinsmined, btc_to_hr, d);
+    [resultat_day, resultat_month, resultat_week, resultat_year] = compute_results(bitcoinsmined, btc_to_hr, d);
   }
 
-  console.log(result_day); 
+  decimals = 6;
 
   var resultat_doll_day = btc_to_dollar(resultat_day);
   var resultat_doll_week = btc_to_dollar(resultat_week);
   var resultat_doll_month = btc_to_dollar(resultat_month);
   var resultat_doll_year = btc_to_dollar(resultat_year);
 
- document.getElementById("result_doll_day").innerHTML = "Dollar/day" +resultat_doll_day + "$";
-document.getElementById("result_doll_week").innerHTML = "Dollar/week" +resultat_doll_week+ "$";
-  document.getElementById("result_doll_month").innerHTML = "Dollay/month" +resultat_doll_month+"$";
-  document.getElementById("result_doll_year").innerHTML = "Dollar/year" +resultat_doll_year+"$";
+ document.getElementById("result_doll_day").innerHTML = "Dollar/day: " +resultat_doll_day.toExponential(3) + " $";
+  document.getElementById("result_doll_week").innerHTML = "Dollar/week: " +resultat_doll_week.toExponential(3)+ " $";
+  document.getElementById("result_doll_month").innerHTML = "Dollay/month: " +resultat_doll_month.toExponential(3)+" $";
+  document.getElementById("result_doll_year").innerHTML = "Dollar/year: " +resultat_doll_year.toExponential(3)+" $";
 
   var elec_cost_day = electricity_cost(power_cons, power_cost);
   var elec_cost_week = electricity_cost(power_cons, power_cost, day*7);
   var elec_cost_month = electricity_cost(power_cons, power_cost, day*31);
   var elec_cost_year = electricity_cost(power_cons, power_cost, day*365);
 
-  document.getElementById("elec_day").innerHTML ="Power Cost/day: " + elec_cost_day + "$";
-  document.getElementById("elec_week").innerHTML = "Power Cost/week: " + elec_cost_week + "$";
-  document.getElementById("elec_month").innerHTML = "Power Cost/month: " +elec_cost_month+ "$";
-  document.getElementById("elec_year").innerHTML = "Power Cost/year: " +elec_cost_year+"$";
+  document.getElementById("elec_day").innerHTML ="Power Cost/day: " + elec_cost_day.toExponential(3) + "$";
+  document.getElementById("elec_week").innerHTML = "Power Cost/week: " + elec_cost_week.toExponential(3) + "$";
+  document.getElementById("elec_month").innerHTML = "Power Cost/month: " +elec_cost_month.toExponential(3)+ "$";
+  document.getElementById("elec_year").innerHTML = "Power Cost/year: " +elec_cost_year.toExponential(3)+"$";
 
-  var profit_day = profits(resultat_day, elec_cost_day, fee);
-  var profit_week = profits(resultat_week, elec_cost_week, fee);
-  var profit_month = profits(resultat_month, elec_cost_month, fee);
-  var profit_year = profits(resultat_year, elec_cost_year, fee);
+  var profit_day = profits(resultat_doll_day, elec_cost_day, fee);
+  var profit_week = profits(resultat_doll_week, elec_cost_week, fee);
+  var profit_month = profits(resultat_doll_month, elec_cost_month, fee);
+  var profit_year = profits(resultat_doll_year, elec_cost_year, fee);
 
-  document.getElementById("profit_day").innerHTML = "Profit/day: " + profit_day + "$";
-  document.getElementById("profit_week").innerHTML = "Profit/week: " +profit_week + "$";
-  document.getElementById("profit_month").innerHTML = "Profit/month: " +profit_month + "$";
-  document.getElementById("profit_year").innerHTML = "Profit/year: " +profit_year + "$";
+  document.getElementById("profit_day").innerHTML = "Profit/day: " + round(profit_day, decimals) + "$";
+  document.getElementById("profit_week").innerHTML = "Profit/week: " + round(profit_week, decimals) + "$";
+  document.getElementById("profit_month").innerHTML = "Profit/month: " + round(profit_month, decimals) + "$";
+  document.getElementById("profit_year").innerHTML = "Profit/year: " + round(profit_year, decimals) + "$";
 
   // return elec_cost_day, elec_cost_week, elec_cost_month, elec_cost_year;
 }
 
 var compute_results = function(variable, f, d=0){
-
     var day = 86400;
+    
     var resultat_day = f(variable, d);
     var resultat_week = f(variable, d, day*7);
     var resultat_month = f(variable, d, day*31);
     var resultat_year = f(variable, d, day*365);
     
-    document.getElementById("result_day").innerHTML = "Mined/day: " +resultat_day + " BTC";
-    document.getElementById("result_week").innerHTML = "Mined/week: " +resultat_week+ " BTC";
-    document.getElementById("result_month").innerHTML = "Mined/month: " +resultat_month+ " BTC";
-    document.getElementById("result_year").innerHTML = "Mined/year: " +resultat_year+ " BTC";
+    document.getElementById("result_day").innerHTML = "Mined/day: " + resultat_day.toExponential(3) + " BTC";
+    document.getElementById("result_week").innerHTML = "Mined/week: " + resultat_day.toExponential(3) + " BTC";
+    document.getElementById("result_month").innerHTML = "Mined/month: " + resultat_day.toExponential(3)+ " BTC";
+    document.getElementById("result_year").innerHTML = "Mined/year: " + resultat_day.toExponential(3) + " BTC";
 
-    return resultat_day, resultat_month, resultat_week, resultat_year;
+    return [resultat_day, resultat_month, resultat_week, resultat_year];
 }
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 //var h = 2367890000

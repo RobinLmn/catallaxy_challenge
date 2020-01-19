@@ -20,16 +20,16 @@ var calcul = function() {
   
   switch(unit) {
     case "KH/s":
-      harshrate *= 10**3;
+      hashrate *= Math.pow(10,3);
       break;
     case "MH/s":
-      harshrate *= 10**6;
+      hashrate *= Math.pow(10,6);
       break;
     case "GH/s":
-      hashrate *= 10**9;
+      hashrate *= Math.pow(10,9);
       break;
     case "TH/s":
-      harshrate *= 10**12;
+      hashrate *= Math.pow(10,12);
       break;
   } 
 
@@ -37,7 +37,7 @@ var calcul = function() {
   var bitcoins_mined = parseFloat(btc);
 
   const xhttp = new XMLHttpRequest();
-  console.log(hashrate)
+  //console.log(hashrate)
 
   xhttp.open(
     "GET",
@@ -46,13 +46,13 @@ var calcul = function() {
   );
 
   xhttp.onreadystatechange = function() {
-    console.log(this.readyState);
-    console.log(this.status);
+    //console.log(this.readyState);
+    //console.log(this.status);
     if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
       // Typical action to be performed when the document is ready:
       const obj = JSON.parse(xhttp.responseText);
       const d = obj.difficulty;
-      console.log("result", d);
+     // console.log("result", d);
       compute_and_display(hashrate, bitcoins_mined, d);
     }
   }
@@ -107,7 +107,7 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   var fee_str = document.getElementById("Fee").value;
   var fee = parseFloat(fee_str);
 
-  var day = 84600
+  var day = 84600;
 
   var resultat_day;
   var resultat_week;
@@ -151,11 +151,13 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
   document.getElementById("profit_week").innerHTML = profit_week + "";
   document.getElementById("profit_month").innerHTML = profit_month + "";
   document.getElementById("profit_year").innerHTML = profit_year + "";
+
+  return elec_cost_day, elec_cost_week, elec_cost_month, elec_cost_year;
 }
 
 var compute_results = function(variable, f, d=0){
 
-    day = 86400
+    var day = 86400;
     var resultat_day = f(variable, d);
     var resultat_week = f(variable, d, day*7);
     var resultat_month = f(variable, d, day*31);

@@ -39,7 +39,15 @@ form {
     margin: 1.5em;
 }
 
-
+table {
+    font: 'Montserrat', sans-serif;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom:25px;
+    font-weight: bold;
+    color: darkorange
+}
 
 /* Clear floats after the columns */
 .row:after {

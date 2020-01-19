@@ -9,6 +9,10 @@ header {
     text-align: center;
 }
 
+element.style {
+    padding: none;
+}
+
 input[type=checkbox] {
     transform: scale(1.5);
     vertical-align: middle;

@@ -2,37 +2,40 @@ var calcul = function() {
   var hashrate = document.getElementById("hashrate");
   var bitcoinsmined = document.getElementById("bitcoinsmined");
   var rewards = document.getElementById("rewards");
-  var difficulty = document.getElementById("difficulty");
-  var checkBox = document.getElementById("hr_to_btc");
+  var checked = document.getElementById("myCheck").checked;
 
-  function myFunction() {
-    var x = document.getElementById("myCheck").checked;
-    console.log(x);
-  }
+  t = 84600;
 
-  if (myFunction()) {
-    var resultat1 = hr_to_btc(hashrate, difficulty);
-    text.style.display = resultat1;
-  } else {
-    var resultat2 = btc_to_hr(bitcoinsmined, difficulty);
-    text.style.display = resultat2;
-  }
-};
+  ///////////////////////////////////////
 
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
+  var xhttp = new XMLHttpRequest();
+  var d;
+  xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-       console.log(xhttp.responseText);
-
-       const obj = JSON.parse(xhttp.responseText);
-       console.log(obj.difficulty);
+      // Typical action to be performed when the document is ready:
+      const obj = JSON.parse(xhttp.responseText);
+      d = obj.difficulty;
     }
-};
-xhttp.open("GET", "https://blockexplorer.com/api/status?q=getDifficulty&fbclid=IwAR1Op2Trtzp6FGMMkU0O4LwYkq2EuoBFe90RzkdhKI3EYZiy80rZHEIm8ts", true);
-xhttp.send(); 
+  };
+  xhttp.open(
+    "GET",
+    "https://blockexplorer.com/api/status?q=getDifficulty&fbclid=IwAR1Op2Trtzp6FGMMkU0O4LwYkq2EuoBFe90RzkdhKI3EYZiy80rZHEIm8ts",
+    true
+  );
+  xhttp.send();
 
-var hr_to_btc = function(hr, d) {
+  //////////////////////////////////////////////
+
+  if (checked) {
+    var resultat1 = hr_to_btc(hashrate);
+    console.log(resultat1);
+  } else {
+    var resultat2 = btc_to_hr(bitcoinsmined);
+    console.log(resultat2);
+  }
+};
+
+var hr_to_btc = function(hr) {
   var r = 12.5;
   var ghr = (d * Math.pow(2, 32)) / t;
   var a = (hr / ghr) * r;
@@ -54,5 +57,4 @@ var btc_to_dollar = function(btc) {
   return dollar_one_btc * btc;
 };
 
-//var d = 14776367535688;
 //var h = 2367890000;

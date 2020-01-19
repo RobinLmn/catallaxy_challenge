@@ -9,6 +9,13 @@ header {
     text-align: center;
 }
 
+header img {
+    float: none;
+    width: 140px;
+    height: 140px;
+    padding-right: 10px;
+}
+
 element.style {
     padding: none;
 }
@@ -52,7 +59,7 @@ table {
     padding-top: 25px;
     padding-bottom:25px;
     font-weight: bold;
-    color: darkorange;
+    color: black;
     text-align: left;
 }
 

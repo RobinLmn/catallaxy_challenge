@@ -2,13 +2,26 @@ var display = function() {
   var checked = document.getElementById("myCheck").checked;
   var btc_mined = document.getElementById("btc_mined");
   var hashpower = document.getElementById("hashpower");
+  var result_day = document.getElementById("result_day");
+  var result_week = document.getElementById("result_week");
+  var result_month = document.getElementById("result_month");
+  var result_year = document.getElementById("result_year");
 
   if (checked) {
     btc_mined.style.display = "none";
     hashpower.style.display = "block";
+    result_day.innerHTML = "Hashing Power/Day";
+    result_week.innerHTML = "Hashing Power/Week";
+    result_month.innerHTML = "Hashing Power/Month";
+    result_year.innerHTML = "Hashing Power/Year";
+
   } else {
     btc_mined.style.display = "block";
     hashpower.style.display = "none";
+    result_day.innerHTML = "Mine/Day";
+    result_week.innerHTML = "Mine/Week";
+    result_month.innerHTML = "Mine/Month";
+    result_month.innerHTML = "Mine/Year";
   }
 };
 

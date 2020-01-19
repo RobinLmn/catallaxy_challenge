@@ -23,3 +23,7 @@ form {
     font-size: 23px;
     font-family: Georgia;
 }
+
+#btc_mined {
+    display: none;
+}

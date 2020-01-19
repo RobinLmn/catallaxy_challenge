@@ -36,20 +36,8 @@ var calcul = function() {
   var btc = document.getElementById("BitcoinsMined").value;
   var bitcoins_mined = parseFloat(btc);
 
-  var checked = document.getElementById("myCheck").checked;
-
-  var power_consumption = document.getElementById("PowerConsumption").value;
-  var power_cons = parseFloat(power_consumption);
-
-  var power_cost_str = document.getElementById("PowerCost").value;
-  var power_cost = parseFloat(power_cost_str);
-
-  var fee_str = document.getElementById("Fee").value;
-  var fee = parseFloat(fee_str);
-
-  t = 84600;
-
   const xhttp = new XMLHttpRequest();
+  console.log(hashrate)
 
   xhttp.open(
     "GET",
@@ -70,8 +58,6 @@ var calcul = function() {
   }
 
   xhttp.send();
-  console.log("HA");
-  console.log("HO");
 };
 
 var hr_to_btc = function(hr, d, t=84600) {
@@ -110,8 +96,19 @@ var profits = function(cost, earned, fees){
 }
 
 var compute_and_display = function(hashrate, bitcoins_mined, d){
+  var checked = document.getElementById("myCheck").checked;
+
+  var power_consumption = document.getElementById("PowerConsumption").value;
+  var power_cons = parseFloat(power_consumption);
+
+  var power_cost_str = document.getElementById("PowerCost").value;
+  var power_cost = parseFloat(power_cost_str);
+
+  var fee_str = document.getElementById("Fee").value;
+  var fee = parseFloat(fee_str);
 
   var day = 84600
+
   var resultat_day;
   var resultat_week;
   var resultat_month;
@@ -157,6 +154,8 @@ var compute_and_display = function(hashrate, bitcoins_mined, d){
 }
 
 var compute_results = function(variable, f, d=0){
+
+    day = 86400
     var resultat_day = f(variable, d);
     var resultat_week = f(variable, d, day*7);
     var resultat_month = f(variable, d, day*31);

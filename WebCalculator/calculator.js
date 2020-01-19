@@ -16,6 +16,23 @@ var calcul = function() {
   var hr = document.getElementById("HashingPower").value;
   var hashrate = parseFloat(hr);
 
+  var unit = document.getElementById("mySelect").value;
+  
+  switch(unit) {
+    case "KH/s":
+      harshrate *= 10**3;
+      break;
+    case "MH/s":
+      harshrate *= 10**6;
+      break;
+    case "GH/s":
+      hashrate *= 10**9;
+      break;
+    case "TH/s":
+      harshrate *= 10**12;
+      break;
+  } 
+
   var btc = document.getElementById("BitcoinsMined").value;
   var bitcoins_mined = parseFloat(btc);
 

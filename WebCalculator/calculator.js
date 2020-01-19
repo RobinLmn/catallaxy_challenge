@@ -1,27 +1,45 @@
-var hr_to_btc  = function (hr, d){
-    var r = 12.5;  
-    var ghr = d * Math.pow(2,32) / t;
-    var a = hr/ghr*r;
+var calcul = function() {
+  var hashrate = document.getElementById("hashrate");
+  var bitcoinsmined = document.getElementById("bitcoinsmined");
+  var rewards = document.getElementById("rewards");
+  var difficulty = document.getElementById("difficulty");
+  var checkBox = document.getElementById("hr_to_btc");
 
-    return a;
+  function myFunction() {
+    var x = document.getElementById("myCheck").checked;
+    document.getElementById("demo").innerHTML = x;
+  }
 
-}
+  if (myFunction()) {
+    var resultat1 = hr_to_btc(hashrate, difficulty);
+    text.style.display = resultat1;
+  } else {
+    var resultat2 = btc_to_hr(bitcoinsmined, difficulty);
+    text.style.display = resultat2;
+  }
+};
 
-var btc_to_hr = function(a, d){
-    var r = 12.5;  
-    var ghr = d * Math.pow(2,32) /t;
-    var hr = (a/r)* ghr;
+var hr_to_btc = function(hr, d) {
+  var r = 12.5;
+  var ghr = (d * Math.pow(2, 32)) / t;
+  var a = (hr / ghr) * r;
 
-    return hr
+  return a;
+};
 
-}
+var btc_to_hr = function(a, d) {
+  var t = 84600;
+  var r = 12.5;
+  var ghr = (d * Math.pow(2, 32)) / t;
+  var hr = (a / r) * ghr;
 
-var  btc_to_dollar = function(btc){
-    var dollar_one_btc = 8938.65;
-    return dollar_one_btc * btc;
-}
+  return hr;
+};
 
-var d = 14776367535688;
-var t = 84600;
-var h = 2367890000;
-console.log(hr_to_btc(h, d));
+var btc_to_dollar = function(btc) {
+  var dollar_one_btc = 8938.65;
+  return dollar_one_btc * btc;
+};
+
+//var d = 14776367535688;
+//var h = 2367890000;

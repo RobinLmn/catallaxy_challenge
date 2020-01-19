@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="miningCalculator.css">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="miningCalculator.css" />
     <title>Bitcoins mining calculator</title>
     <script src="calculator.js"></script>
-</head>
-<body>
-<header>Bitcoins mining calculator</header>
-<main>
-    <form>
-        <input type="checkbox" name="hr_to_btc" value="true"> Hash rate to Mined Bitcoins<br>
+  </head>
+  <body>
+    <header>Bitcoins mining calculator</header>
+    <main>
+      <form>
+        Checkbox: <input type="checkbox" id="myCheck" /> <br /><br />
         Hashing Power:
-        <br><br>
-        <input type="text" name="HashingPower">
-            <select name="currentHashingUnit">
-                <option value="H/s">H/s</option>
-                <option value="KH/s">KH/s</option>
-                <option value="MH/s">MH/s</option>
-                <option value="GH/s">GH/s</option>
-                <option value="TH/s">TH/s</option>
-            </select>
-        <br><br>
+        <br /><br />
+        <input type="text" name="HashingPower" />
+        <select name="currentHashingUnit">
+          <option value="H/s">H/s</option>
+          <option value="KH/s">KH/s</option>
+          <option value="MH/s">MH/s</option>
+          <option value="GH/s">GH/s</option>
+          <option value="TH/s">TH/s</option>
+        </select>
+        <br /><br />
         Bitcoins Mined:
-        <br><br>
-        <input type="text" name="BitcoinsMined"><br><br>
-        Rewards:
-        <br><br>
-        <input type="text" name="Rewards"><br><br>
-        Difficulty:<br><br>
-        <input type="text" name="difficulty"><br><br>
-        Power Comsumption (w):<br><br>
-        <input type="text" name="PowerComsumption"><br><br>
-        Cost Per KWh ($)<br><br>
-        <input type="text" name="CostPerKwh"><br><br>
-        Pool fee (%):<br><br>
-        <input type="text" name="PoolFee"><br><br>
-        <input type="Button" value="Calculate" onclick="calcul()">
-    </form>
-</main>
-<footer></footer>
-</body>
+        <br /><br />
+        <input type="text" name="BitcoinsMined" /><br /><br />
+
+        Difficulty:<br /><br />
+        <input type="text" name="difficulty" /><br /><br />
+        Power Comsumption (w):<br /><br />
+        <input type="text" name="PowerComsumption" /><br /><br />
+        Cost Per KWh ($)<br /><br />
+        <input type="text" name="CostPerKwh" /><br /><br />
+        Pool fee (%):<br /><br />
+        <input type="text" name="PoolFee" /><br /><br />
+        <input type="Button" value="Calculate" onclick="calcul()" />
+      </form>
+    </main>
+    <footer></footer>
+  </body>
 </html>

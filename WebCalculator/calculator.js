@@ -50,9 +50,32 @@ var calcul = function() {
     var btc = document.getElementById("BitcoinsMined").value;
     var bitcoins_mined = parseFloat(btc);
 
-    var diff = document.getElementById("Difficulty").value;
 
-    compute_and_display(hashrate, bitcoins_mined, diff);
+    const xhttp = new XMLHttpRequest();
+  //console.log(hashrate)
+
+  xhttp.open(
+    "GET",
+    "https://blockexplorer.com/api/status?q=getDifficulty&fbclid=IwAR1Op2Trtzp6FGMMkU0O4LwYkq2EuoBFe90RzkdhKI3EYZiy80rZHEIm8ts",
+    true
+  );
+
+  xhttp.onreadystatechange = function() {
+    //console.log(this.readyState);
+    //console.log(this.status);
+    if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+      // Typical action to be performed when the document is ready:
+      const obj = JSON.parse(xhttp.responseText);
+      const d = obj.difficulty;
+
+      document.getElementById("Difficulty").defaultValue = d;
+      var diff = document.getElementById("Difficulty").value;
+     // console.log("result", d);
+      compute_and_display(hashrate, bitcoins_mined, d);
+    }
+  }
+  xhttp.send();
+
 }
 
 

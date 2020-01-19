@@ -10,20 +10,23 @@ var display = function() {
   if (checked) {
     btc_mined.style.display = "none";
     hashpower.style.display = "block";
-    result_day.innerHTML = "Hashing Power/Day";
-    result_week.innerHTML = "Hashing Power/Week";
-    result_month.innerHTML = "Hashing Power/Month";
-    result_year.innerHTML = "Hashing Power/Year";
+      result_day.innerHTML = "Mine/Day";
+      result_week.innerHTML = "Mine/Week";
+      result_month.innerHTML = "Mine/Month";
+      result_year.innerHTML = "Mine/Year";
+
 
   } else {
     btc_mined.style.display = "block";
     hashpower.style.display = "none";
-    result_day.innerHTML = "Mine/Day";
-    result_week.innerHTML = "Mine/Week";
-    result_month.innerHTML = "Mine/Month";
-    result_year.innerHTML = "Mine/Year";
+      result_day.innerHTML = "Hashing Power/Day";
+      result_week.innerHTML = "Hashing Power/Week";
+      result_month.innerHTML = "Hashing Power/Month";
+      result_year.innerHTML = "Hashing Power/Year";
+
   }
 };
+
 
 var calcul = function() {
     var hr = document.getElementById("HashingPower").value;

@@ -5,10 +5,12 @@ var calcul = function() {
   var difficulty = document.getElementById("difficulty");
   var checkBox = document.getElementById("hr_to_btc");
 
-  if (checkBox.checked){
-    hr_to_btc(hashrate, difficulty);
+  if (checkBox.checked) {
+    var resultat1 = hr_to_btc(hashrate, difficulty);
+    text.style.display = resultat1;
   } else {
-    btc_to_hr(bitcoinsmined, difficulty);
+    var resultat2 = btc_to_hr(bitcoinsmined, difficulty);
+    text.style.display = resultat2;
   }
 };
 

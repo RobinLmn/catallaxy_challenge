@@ -1,6 +1,13 @@
 var calcul = function() {
   var bool;
-  document.getElementById("");
+  var hashrate = document.getElementById("hashrate");
+  var bitcoinsmined = document.getElementById("bitcoinsmined");
+  var rewards = document.getElementById("rewards");
+  var difficulty = document.getElementById("difficulty");
+
+  if(){
+      
+  }
   return bool;
 };
 

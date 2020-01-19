@@ -1,4 +1,10 @@
-var hr_to_btc  = function (hr, d){
+var calcul = function(){
+    var bool;
+    document.getElementById("");
+    return bool
+}
+
+var hr_to_btc  = function (hr, d, bool){
     var r = 12.5;  
     var ghr = d * Math.pow(2,32) / t;
     var a = hr/ghr*r;

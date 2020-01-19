@@ -19,14 +19,13 @@ input[type=checkbox] {
 }
 
 main {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 form {
     text-align: left;
     font-size: 23px;
-    padding-left: 56px;
 }
 
 #btc_mined {
@@ -35,8 +34,12 @@ form {
 
 .column {
     float: left;
-    width: 50%;
+    width: 45%;
+    padding-left: 50px;
+    margin: 1.5em;
 }
+
+
 
 /* Clear floats after the columns */
 .row:after {

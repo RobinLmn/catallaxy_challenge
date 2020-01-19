@@ -21,58 +21,40 @@ var display = function() {
     result_day.innerHTML = "Mine/Day";
     result_week.innerHTML = "Mine/Week";
     result_month.innerHTML = "Mine/Month";
-    result_month.innerHTML = "Mine/Year";
+    result_year.innerHTML = "Mine/Year";
   }
 };
 
 var calcul = function() {
-  var hr = document.getElementById("HashingPower").value;
-  var hashrate = parseFloat(hr);
+    var hr = document.getElementById("HashingPower").value;
+    var hashrate = parseFloat(hr);
 
-  var unit = document.getElementById("mySelect").value;
+    var unit = document.getElementById("mySelect").value;
 
-  
-  switch(unit) {
-    case "KH/s":
-      hashrate *= Math.pow(10,3);
-      break;
-    case "MH/s":
-      hashrate *= Math.pow(10,6);
-      break;
-    case "GH/s":
-      hashrate *= Math.pow(10,9);
-      break;
-    case "TH/s":
-      hashrate *= Math.pow(10,12);
-      break;
-  } 
 
-  var btc = document.getElementById("BitcoinsMined").value;
-  var bitcoins_mined = parseFloat(btc);
-
-  const xhttp = new XMLHttpRequest();
-  //console.log(hashrate)
-
-  xhttp.open(
-    "GET",
-    "https://blockexplorer.com/api/status?q=getDifficulty&fbclid=IwAR1Op2Trtzp6FGMMkU0O4LwYkq2EuoBFe90RzkdhKI3EYZiy80rZHEIm8ts",
-    true
-  );
-
-  xhttp.onreadystatechange = function() {
-    //console.log(this.readyState);
-    //console.log(this.status);
-    if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
-      // Typical action to be performed when the document is ready:
-      const obj = JSON.parse(xhttp.responseText);
-      const d = obj.difficulty;
-     // console.log("result", d);
-      compute_and_display(hashrate, bitcoins_mined, d);
+    switch (unit) {
+        case "KH/s":
+            hashrate *= Math.pow(10, 3);
+            break;
+        case "MH/s":
+            hashrate *= Math.pow(10, 6);
+            break;
+        case "GH/s":
+            hashrate *= Math.pow(10, 9);
+            break;
+        case "TH/s":
+            hashrate *= Math.pow(10, 12);
+            break;
     }
-  }
 
-  xhttp.send();
-};
+    var btc = document.getElementById("BitcoinsMined").value;
+    var bitcoins_mined = parseFloat(btc);
+
+    var diff = document.getElementById("Difficulty").value;
+
+    compute_and_display(hashrate, bitcoins_mined, diff);
+}
+
 
 var hr_to_btc = function(hr, d, t=84600) {
   

@@ -3,27 +3,45 @@ header {
     font-weight: bold;
     padding-bottom: 30px;
     padding-top: 30px;
-    color: lightgreen;
+    color: orange;
     letter-spacing: 3px;
     font-variant: all-small-caps;
-    text-shadow: 2px 2px darkgreen;
+    text-shadow: 2px 2px darkorange;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: black;
     position: relative;
     text-align: center;
 }
 
-body {
-    margin-left: 10%;
-    margin-right: 10%;
+input[type=checkbox] {
+    transform: scale(1.5);
+    vertical-align: middle;
+}
+
+main {
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 form {
     text-align: left;
     font-size: 23px;
-    font-family: Georgia;
+    padding-left: 20px;
 }
 
 #btc_mined {
     display: none;
 }
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+

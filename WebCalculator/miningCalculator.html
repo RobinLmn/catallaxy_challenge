@@ -2,20 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="miningCalculator.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Bitcoins mining calculator</title>
     <script src="calculator.js"></script>
   </head>
   <body>
     <header>Bitcoins mining calculator</header>
     <main>
-      <form>
-        Checkbox: <input type="checkbox" id="myCheck" onclick="display()"
-        checked/>
+      <div class="row">
+        <div class="column">
+      <form class="w3-container w3-card-4">
+        <h2 class="w3-text-orange">Inputs</h2><br>
+        <label
+                class="w3-text-orange"><b> Hashing power &#x21C4; bitcoins
+          mined:</b></label>
+        <input type="checkbox" id="myCheck" onclick="display()" checked/>
         <div id="hashpower">
-          <br /><br />
-          Hashing Power:
-          <br /><br />
+          <br><br>
+          <label class="w3-text-orange"><b>Hashing Power:</b></label>
+          <br><br>
           <input type="text" name="HashingPower" id="HashingPower" />
           <select name="currentHashingUnit" id="mySelect">
             <option value="H/s">H/s</option>
@@ -27,24 +34,37 @@
         </div>
 
         <div id="btc_mined">
-          <br /><br />
-          <form>
-            Bitcoins Mined:
-            <br /><br />
+          <br><br>
+          <label class="w3-text-orange"><b>Bitcoins Mined:</b></label>
+            <br><br>
             <input type="text" name="BitcoinsMined" id="BitcoinsMined"/>
-          </form>
         </div>
-
-        Power Comsumption (w):<br /><br />
-        <input type="text" name="PowerComsumption" /><br /><br />
-        Cost Per KWh ($)<br /><br />
-        <input type="text" name="CostPerKwh" /><br /><br />
-        Pool fee (%):<br /><br />
-        <input type="text" name="PoolFee" /><br /><br />
-        <input type="Button" value="Calculate" onclick="calcul()" />
+        <br><br>
+        <label class="w3-text-orange"><b>Power Comsumption (w):</b></label>
+        <br><br>
+        <input type="text" name="PowerComsumption"
+               id="PowerConsumption"/><br><br>
+        <label class="w3-text-orange"><b>Cost Per KWh ($)</b></label>
+        <br><br>
+        <input type="text" name="CostPerKwh" id="PowerCost" /><br><br>
+        <label class="w3-text-orange"><b>Pool fee (%):</b></label>
+        <br><br>
+        <input type="text" name="PoolFee" id="Fee"/><br><br>
+        <p>
+        <button value="Calculate" onclick="calcul()" class="w3-btn w3-orange">
+          Calculate</button>
+        </p>
       </form>
       <div>
-        <textarea id="result"> </textarea>
+        <p id="result_day"></p>
+        <p id="result_week"></p>
+        <p id="result_month"></p>
+        <p id="result_year"></p>
+      </div>
+        </div>
+      <div class="column">
+        fsldfnsjkfk
+      </div>
       </div>
     </main>
     <footer></footer>

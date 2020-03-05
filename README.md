@@ -1,6 +1,10 @@
 # Catallaxy_challenge - hack_mcwics 2020
 
+# Link
 
+https://devpost.com/software/hashrate-calculator
+
+# Info
 
 The catallaxy challenge really inspired us. The blockchain technology has been a real innovation for our world. One of its main usage is in cryptocurrencies. With the growth of the blockchain and cryptocurrencies like Bitcoin new threats appear; attacks, frauds.
 

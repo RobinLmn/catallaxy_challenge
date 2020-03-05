@@ -1,4 +1,4 @@
-# catallaxy_challenge - hack_mcwics 2020
+# Catallaxy_challenge - hack_mcwics 2020
 
 
 

@@ -2,6 +2,8 @@
 
 # Link
 
+To try the calculator, open and download the GitHub Rep in the link below. In Web Calculator, open calculator.html.
+
 App : https://htmlpreview.github.io/?https://github.com/RobinLmn/catallaxy_challenge/blob/master/WebCalculator/miningCalculator.html
 
 Devpost : https://devpost.com/software/hashrate-calculator
